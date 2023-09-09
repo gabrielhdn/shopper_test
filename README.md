@@ -10,7 +10,6 @@ Após clonar o repositório para a sua máquina, navegue para a pasta backend. L
 
 ```
 docker-compose up -d (ou docker compose up -d, caso esteja utilizando o docker-compose plugin)
-
 ```
 
 **:warning: Seu docker-compose precisa estar na versão 1.29 ou superior. Dê preferência para versões mais atualizadas. [Veja aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) ou [na documentação](https://docs.docker.com/compose/install/) como instalá-lo. No primeiro artigo, você pode substituir onde está `1.26.0` por `1.29.2`.**
@@ -22,7 +21,6 @@ Aqui, você deve estar com um contêiner "mysql_shopper" devidamente rodando na 
 ```
 yarn (ou npm install)
 yarn dev (ou npm run dev)
-
 ```
 
 ## Executando o front-end
@@ -32,7 +30,6 @@ O servidor back-end deve estar rodando sem problemas. Agora, navegue para a past
 ```
 yarn (ou npm install)
 yarn dev (ou npm run dev)
-
 ```
 
 Depois disso, você poderá acessar a aplicação pela rota "http://localhost:5173".
@@ -43,7 +40,6 @@ Navegue até a pasta backend. Lá, execute o seguinte comando Docker para a cria
 
 ```
 docker run -d --name mysql_shopper -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
-
 ```
 
 Agora, é preciso executar o arquivo database.sql, localizado na raiz deste diretório, dentro do contèiner. Para isso, rode os seguintes comandos:
@@ -53,6 +49,5 @@ docker cp database.sql mysql_shopper:/database.sql
 docker exec -it mysql_shopper mysql -u root -p
 source /database.sql;
 exit;
-
 ```
 Dessa forma, o banco de dados estará devidamente populado e pronto para ser utilizado pela aplicação.
