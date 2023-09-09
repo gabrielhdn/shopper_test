@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "env": {
+      "browser": false,
+      "node": true,
+      "es2021": true,
+      "jest": true
+  },
+  "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "airbnb-base",
+      "plugin:editorconfig/noconflict",
+      "plugin:mocha/recommended",
+      "airbnb-typescript/base"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+      {
+          "files": ["*.ts", "tests/**/*.tests.js"],
+          "rules": {
+              "prefer-arrow-callback": "off",
+              "func-names": "off",
+              "max-lines-per-function": "off"
+            }
+      }
+  ],
+  "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "editorconfig"],
+  "rules": {
+      "class-methods-use-this": "off",
+      "no-underscore-dangle": "off",
+      "no-console": "off"
+  }
+}
