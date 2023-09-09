@@ -1,3 +1,5 @@
+![](https://user-images.githubusercontent.com/100055011/266756913-79e17d0e-25fd-456d-9e00-7a63e805b168.png)
+
 # Shopper - Projeto de teste prático
 
 Este é um projeto full-stack. Siga os passos abaixo para executar a aplicação da forma correta, rodando, localmente, o banco de dados e os servidores front-end e back-end.
