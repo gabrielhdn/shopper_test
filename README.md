@@ -14,7 +14,7 @@ Após clonar o repositório para a sua máquina, navegue para a pasta backend. L
 docker run -d --name mysql_shopper -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
 ```
 
-Agora, é preciso executar o arquivo database.sql, localizado na raiz deste diretório, dentro do contèiner. Para isso, rode os seguintes comandos:
+Agora, é preciso executar o arquivo database.sql, localizado na raiz deste diretório, dentro do contêiner. Para isso, rode os seguintes comandos:
 
 ```
 docker cp database.sql mysql_shopper:/database.sql
