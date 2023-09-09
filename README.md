@@ -11,7 +11,7 @@ Há um arquivo docker-compose.yml na raiz da pasta backend, mas que, se executad
 Após clonar o repositório para a sua máquina, navegue para a pasta backend. Lá, execute o seguinte comando Docker para a criação de um contêiner com a imagem do MySQL na versão 8:
 
 ```
-docker run -d --name mysql_shopper -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
+docker run --name mysql_shopper -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
 ```
 
 Agora, é preciso executar o arquivo database.sql, localizado na raiz deste diretório, dentro do contêiner. Para isso, rode os seguintes comandos:
