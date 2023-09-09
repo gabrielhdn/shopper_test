@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  mysql_shopper:
+    image: mysql:8
+    container_name: mysql_shopper
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    command: --init-file=/docker-entrypoint-initdb.d/database.sql
