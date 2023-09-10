@@ -38,6 +38,7 @@ const Home = () => {
             if (result.data && result.data.length > 0) {
               setPricingData(result.data as IPricingData[]);
               setWereProductsUpdated(false);
+              setIsDataOk(false);
             }
           },
         });
