@@ -39,6 +39,7 @@ const Home = () => {
               setPricingData(result.data as IPricingData[]);
               setWereProductsUpdated(false);
               setIsDataOk(false);
+              setValidatedProducts(null);
             }
           },
         });
