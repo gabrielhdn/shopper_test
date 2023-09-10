@@ -1,8 +1,8 @@
 export interface IPackItem {
-  id: string;
-  pack_id: string;
-  product_id: string;
-  qty: string;
+  id: number;
+  pack_id: number;
+  product_id: number;
+  qty: number;
 }
 
 export interface IPackRepository {

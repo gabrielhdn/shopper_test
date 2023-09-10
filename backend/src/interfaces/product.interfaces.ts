@@ -6,17 +6,17 @@ export interface INewProduct {
 }
 
 export interface IProduct {
-  code: string;
+  code: number;
   name: string;
-  cost_price: string;
-  sales_price: string;
+  cost_price: number;
+  sales_price: number;
 }
 
 export interface IProductInfo {
   product_code: string;
   name: string;
   new_price: string;
-  sales_price: string;
+  sales_price: number;
   errors: string[],
 }
 

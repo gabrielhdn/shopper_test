@@ -58,8 +58,8 @@ class ProductService implements IProductService {
           productInfo.errors.push('Novo preço inválido.');
         }
 
-        const currentPrice = parseFloat(product.sales_price);
-        const costPrice = parseFloat(product.cost_price);
+        const currentPrice = product.sales_price;
+        const costPrice = product.cost_price;
         const newPrice = parseFloat(new_price);
         const priceChangePercentage = ((newPrice - currentPrice) /  currentPrice) * 100;
 
@@ -78,7 +78,7 @@ class ProductService implements IProductService {
         const packDetails = await this.packRepo.getPack(product_code);
 
         if (productPack) {
-          if (!products.find((p) => p.product_code === productPack.pack_id)) {
+          if (!products.find((p) =>  parseFloat(p.product_code) === productPack.pack_id)) {
             productInfo.errors.push('Este produto faz parte de um pack, mas o preço do pack não foi reajustado.');
           }
         }
@@ -88,13 +88,13 @@ class ProductService implements IProductService {
           let componentsPrice = 0;
 
           packDetails.forEach((component: IPackItem) => {
-            if (!products.find((p) => p.product_code === component.product_id)) {
+            if (!products.find((p) => parseFloat(p.product_code) === component.product_id)) {
               productInfo.errors.push(`O reajuste também precisa ser feito para o componente do pack com código ${component.product_id}.`);
             }
 
             products.forEach((p) => {
-              if (p.product_code === component.product_id) {
-                componentsPrice += (parseFloat(p.new_price) * parseFloat(component.qty));
+              if (parseFloat(p.product_code) === component.product_id) {
+                componentsPrice += (parseFloat(p.new_price) * component.qty);
               }
             });
           });
