@@ -1,4 +1,4 @@
-import { IPackRepository } from "../interfaces/pack.interfaces";
+import { IPackItem, IPackRepository } from "../interfaces/pack.interfaces";
 import { INewProduct, IProductInfo, IProductRepository, IProductService } from "../interfaces/product.interfaces";
 import PackRepository from "../repositories/PackRepository";
 import ProductRepository from "../repositories/ProductRepository";
@@ -87,14 +87,14 @@ class ProductService implements IProductService {
           const packPrice = parseFloat(new_price);
           let componentsPrice = 0;
 
-          packDetails.forEach((component: any) => {
+          packDetails.forEach((component: IPackItem) => {
             if (!products.find((p) => p.product_code === component.product_id)) {
               productInfo.errors.push(`O reajuste também precisa ser feito para o componente do pack com código ${component.product_id}.`);
             }
 
             products.forEach((p) => {
               if (p.product_code === component.product_id) {
-                componentsPrice += (parseFloat(p.new_price) * parseFloat(component.qty));
+                componentsPrice += (parseFloat(p.new_price) * component.qty);
               }
             });
           });

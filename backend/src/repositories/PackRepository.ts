@@ -1,6 +1,6 @@
 import conn from './connection';
 import { Pool, RowDataPacket } from 'mysql2/promise';
-import { IPackRepository } from "../interfaces/pack.interfaces";
+import { IPackItem, IPackRepository } from "../interfaces/pack.interfaces";
 
 class PackRepository implements IPackRepository {
   private conn: Pool;
@@ -9,7 +9,7 @@ class PackRepository implements IPackRepository {
     this.conn = conn;
   }
 
-  async getPack(productCode: number): Promise<any | null> {
+  async getPack(productCode: number): Promise<IPackItem[] | null> {
     const [rows] = await this.conn.execute<RowDataPacket[]>(
       'SELECT * FROM ShopperDatabase.packs WHERE pack_id = ?',
       [productCode],
@@ -19,10 +19,17 @@ class PackRepository implements IPackRepository {
       return null;
     }
 
-    return rows;
+    const packItems = rows.map((row) => ({
+      id: row.id,
+      pack_id: row.pack_id,
+      product_id: row.product_id,
+      qty: row.qty,
+    }));
+
+    return packItems;
   }
 
-  async getProductPack(productCode: number): Promise<any | null> {
+  async getProductPack(productCode: number): Promise<IPackItem | null> {
     const [[rows]] = await this.conn.execute<RowDataPacket[]>(
       'SELECT * FROM ShopperDatabase.packs WHERE product_id = ?',
       [productCode]
@@ -30,7 +37,14 @@ class PackRepository implements IPackRepository {
 
     if (!rows) return null;
 
-    return rows;
+    const productPack = {
+      id: rows.id,
+      pack_id: rows.pack_id,
+      product_id: rows.product_id,
+      qty: rows.qty,
+    };
+
+    return productPack;
   }
 }
 

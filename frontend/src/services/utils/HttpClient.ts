@@ -8,7 +8,6 @@ class HttpClient {
   }
 
   post(endpoint: string, options?: { body?: IPricingData[] }) {
-    console.log('client POST');
     return this.makeRequest(endpoint, {
       method: 'POST',
       body: options?.body,
