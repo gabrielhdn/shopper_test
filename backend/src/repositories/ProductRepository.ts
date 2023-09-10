@@ -9,7 +9,7 @@ class ProductRepository implements IProductRepository {
     this.conn = conn;
   }
 
-  async getProduct(productCode: number): Promise<IProduct | null> {
+  async getProduct(productCode: string): Promise<IProduct | null> {
     const [[row]] = await this.conn.execute<RowDataPacket[]>(
       'SELECT * FROM ShopperDatabase.products WHERE code = ?',
       [productCode],

@@ -1,27 +1,27 @@
 import { IPackRepository } from "./pack.interfaces";
 
 export interface INewProduct {
-  product_code: number;
+  product_code: string;
   new_price: string;
 }
 
 export interface IProduct {
-  code: number;
+  code: string;
   name: string;
-  cost_price: number;
-  sales_price: number;
+  cost_price: string;
+  sales_price: string;
 }
 
 export interface IProductInfo {
-  product_code: number;
+  product_code: string;
   name: string;
   new_price: string;
-  sales_price: number;
+  sales_price: string;
   errors: string[],
 }
 
 export interface IProductRepository {
-  getProduct(productCode: number): Promise<IProduct | null>;
+  getProduct(productCode: string): Promise<IProduct | null>;
   updateProduct(product: INewProduct): Promise<void>;
 }
 

@@ -58,8 +58,8 @@ class ProductService implements IProductService {
           productInfo.errors.push('Novo preço inválido.');
         }
 
-        const currentPrice = product.sales_price;
-        const costPrice = product.cost_price;
+        const currentPrice = parseFloat(product.sales_price);
+        const costPrice = parseFloat(product.cost_price);
         const newPrice = parseFloat(new_price);
         const priceChangePercentage = ((newPrice - currentPrice) /  currentPrice) * 100;
 
@@ -94,7 +94,7 @@ class ProductService implements IProductService {
 
             products.forEach((p) => {
               if (p.product_code === component.product_id) {
-                componentsPrice += (parseFloat(p.new_price) * component.qty);
+                componentsPrice += (parseFloat(p.new_price) * parseFloat(component.qty));
               }
             });
           });

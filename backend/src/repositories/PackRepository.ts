@@ -9,7 +9,7 @@ class PackRepository implements IPackRepository {
     this.conn = conn;
   }
 
-  async getPack(productCode: number): Promise<IPackItem[] | null> {
+  async getPack(productCode: string): Promise<IPackItem[] | null> {
     const [rows] = await this.conn.execute<RowDataPacket[]>(
       'SELECT * FROM ShopperDatabase.packs WHERE pack_id = ?',
       [productCode],
@@ -29,7 +29,7 @@ class PackRepository implements IPackRepository {
     return packItems;
   }
 
-  async getProductPack(productCode: number): Promise<IPackItem | null> {
+  async getProductPack(productCode: string): Promise<IPackItem | null> {
     const [[rows]] = await this.conn.execute<RowDataPacket[]>(
       'SELECT * FROM ShopperDatabase.packs WHERE product_id = ?',
       [productCode]
